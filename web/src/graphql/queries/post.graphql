@@ -1,0 +1,10 @@
+query Post($id: Int!){
+    post(id: $id){
+        ...PostSnippet
+        creator{
+            id
+            email
+            username
+        }
+    }
+}

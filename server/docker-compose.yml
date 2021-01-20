@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  db:
+    container_name: testdb_container
+    image: library/postgres:11.7-alpine
+    ports:
+      - 5432:5432
+    restart: unless-stopped
+    volumes:
+      - test_db:/var/lib/postgresql/data
+    env_file:
+      - .env
+
+  redis:
+    container_name: testredis_container
+    image: library/redis:5.0-alpine
+    ports:
+      - 6379:6379
+    restart: unless-stopped
+    volumes:
+      - test-redis:/data
+
+volumes:
+  test_db:
+  test-redis:
